@@ -110,6 +110,7 @@ var checkUser = function(req, res, next) {
           console.log('Unverified User:');
           console.log(provider.valid_request);
           console.log(provider);
+          res.send(provider);
           res.send('Unverified User');
         } else {         
           //check if auth token already exists in Redis 
