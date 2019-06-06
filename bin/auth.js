@@ -32,8 +32,8 @@ let oauth2 = require('simple-oauth2').create(credentials);
 
 //queue to callback Auth Token (prevents multiple calls)
 var authTokenQueue = new Queue(function(user_id,callback){
-  console.log('Redis Key');
-  console.log('token_'+String(user_id));
+  winston.log('info','Redis Key');
+  winston.log('info','token_'+String(user_id));
   redis_client.get('token_'+String(user_id), async function(err, token_string) {
     if (err){
       console.log(err);
