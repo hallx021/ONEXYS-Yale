@@ -106,30 +106,31 @@ var checkUser = function(req, res, next) {
       next();
     } else {      
       provider.valid_request(req, function(err, is_valid) {
-        if (!is_valid) {
-          console.log('Unverified User:');
-          console.log(provider.valid_request);
-          console.log(provider);
-          res.send(provider);
-          res.send('Unverified User');
-        } else {         
-          //check if auth token already exists in Redis 
-          console.log('Redis Key (Check User)');
-          console.log('token_'+String(req.session.user_id));
-          redis_client.exists('token_'+String(req.session.user_id), function(err, token_exists) {
-            if (token_exists==0){
-              // generate auth token
-              let authorizationUri = oauth2.authorizationCode.authorizeURL({
-                redirect_uri: config.redirectURL,
-                state: String(req.session.user_id),
-              });
-              res.redirect(authorizationUri);
-            } else {
-              // auth token exists
-              next();
-            }
-          });
-        }
+        next();
+        // if (!is_valid) {
+        //   console.log('Unverified User:');
+        //   console.log(provider.valid_request);
+        //   console.log(provider);
+        //   res.send(provider);
+        //   res.send('Unverified User');
+        // } else {         
+        //   //check if auth token already exists in Redis 
+        //   console.log('Redis Key (Check User)');
+        //   console.log('token_'+String(req.session.user_id));
+        //   redis_client.exists('token_'+String(req.session.user_id), function(err, token_exists) {
+        //     if (token_exists==0){
+        //       // generate auth token
+        //       let authorizationUri = oauth2.authorizationCode.authorizeURL({
+        //         redirect_uri: config.redirectURL,
+        //         state: String(req.session.user_id),
+        //       });
+        //       res.redirect(authorizationUri);
+        //     } else {
+        //       // auth token exists
+        //       next();
+        //     }
+        //   });
+        // }
       });
     }
   }
