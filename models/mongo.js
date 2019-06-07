@@ -7,7 +7,9 @@ function getData(courseID, collection_name, callback){
     // Use connect method to connect to the server
     var connectionURL = config.mongoURLs[courseID]||config.mongoURLs[process.env.TEST_COURSE_NUMBER];
     console.log(connectionURL);
+    
     MongoClient.connect(connectionURL, function(err, db) {
+        console.log(err);
         assert.equal(null, err);
         db.collection(collection_name).find().sort({"_id":1}).toArray(function(err, data) {
             callback(err,data);
