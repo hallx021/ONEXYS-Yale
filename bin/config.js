@@ -21,7 +21,8 @@ config.disableLeaderboard = process.env.DISABLE_LEADERBOARD.toLowerCase() == 'tr
 
 //configure MongoDB urls here - course ID to mongoDB URL
 config.mongoURLs = {
-    '48036': 'mongodb://'+config.mongo_username+':'+config.mongo_password+'@ds121189.mlab.com:21189/onexys_blue' || config.local_mongo_database,
+    '48036': 'mongodb+srv://'+config.mongo_username+':'+config.mongo_password+'@onexys-yale-kb9ww.mongodb.net/test?retryWrites=true&w=majority',
+    //'48036': 'mongodb://'+config.mongo_username+':'+config.mongo_password+'@ds121189.mlab.com:21189/onexys_blue' || config.local_mongo_database,
     '38082': 'mongodb://'+config.mongo_username+':'+config.mongo_password+'@ds121189.mlab.com:21189/onexys_blue' || config.local_mongo_database,
     '10184': 'mongodb://'+config.mongo_username+':'+config.mongo_password+'@ds223509.mlab.com:23509/onexys_dev' || config.local_mongo_database,
     '38080': 'mongodb://'+config.mongo_username+':'+config.mongo_password+'@ds121189.mlab.com:21189/onexys_gray' || config.local_mongo_database,
