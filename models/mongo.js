@@ -5,7 +5,7 @@ var config = require('../bin/config');
 
 function getData(courseID, collection_name, callback){
     // Use connect method to connect to the server
-    var connectionURL = config.mongoURL;
+    var connectionURL = config.mongoURLs[courseID]||config.mongoURLs[process.env.TEST_COURSE_NUMBER];
     MongoClient.connect(connectionURL, function(err, client) {
         assert.equal(null, err);
         console.log(err);
