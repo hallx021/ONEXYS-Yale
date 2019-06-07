@@ -8,6 +8,8 @@ function getData(courseID, collection_name, callback){
     var connectionURL = config.mongoURL;
     MongoClient.connect(connectionURL, function(err, client) {
         assert.equal(null, err);
+        console.log(err);
+        console.log(connectionURL);
         var db = client.db(config.mongoDBs[courseID]);
         db.collection(collection_name).find().sort({"_id":1}).toArray(function(err, data) {
             callback(err,data);

@@ -30,6 +30,10 @@ config.mongoURLs = {
     '38081': 'mongodb://'+config.mongo_username+':'+config.mongo_password+'@ds157614.mlab.com:57614/onexys_white' || config.local_mongo_database
 }
 
+config.mongoDBs = {
+    '48036': 'onexys_blue'
+  }
+
 config.cookieduration = 1000 * 60 * 60 * 24;
 
 module.exports = config;
