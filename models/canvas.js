@@ -17,7 +17,10 @@ var assignment_user_url = (studentID, courseID) => {
 }
 
 var notes_column_url = (courseID) => {
-  return config.canvasURL + '/api/v1/courses/' + courseID + '/custom_gradebook_columns/';
+  var url_res = config.canvasURL + '/api/v1/courses/' + courseID + '/custom_gradebook_columns/';
+  console.log("URL RESULTS");
+  console.log(url_res);
+  return url_res;
 }
 
 var get_update_url = (courseID, callback) => {    
