@@ -5,18 +5,17 @@ var config = require('../bin/config');
 
 function getData(courseID, collection_name, callback){
     // Use connect method to connect to the server
-    var connectionURL = config.mongoURLs[courseID]||config.mongoURLs[process.env.TEST_COURSE_NUMBER];
-    console.log(connectionURL);
-    
-    MongoClient.connect(connectionURL, function(err, db) {
-        console.log(err);
+    var connectionURL = config.mongoURL;
+    MongoClient.connect(connectionURL, function(err, client) {
         assert.equal(null, err);
+        var db = client.db(config.mongoDBs[courseID]);
         db.collection(collection_name).find().sort({"_id":1}).toArray(function(err, data) {
             callback(err,data);
-            db.close();
-        });        
-    });   
+            client.close();
+        });
+    });
 }
+
 
 function insertData(courseID, collection_name, data, callback){
     // Use connect method to connect to the server
