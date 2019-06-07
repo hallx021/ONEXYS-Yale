@@ -276,6 +276,7 @@ var updateAllStudentData = function(courseID, callback){
                 content: totalPoints.toString()
               }
             }, function(err, body) {
+              console.log("FROM ALL STUDENT DATA CALLING get update url");
               if (err){
                 console.log(err);
               }

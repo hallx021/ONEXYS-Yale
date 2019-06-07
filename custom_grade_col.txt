@@ -1,0 +1,15 @@
+{
+  // The ID of the custom gradebook column
+  "id": 1219,
+  // When true, this column's visibility will be toggled in the Gradebook when a
+  // user selects to show or hide notes
+  "teacher_notes": false,
+  // header text
+  "title": "Stuff",
+  // column order
+  "position": 1,
+  // won't be displayed if hidden is true
+  "hidden": false,
+  // won't be editable in the gradebook UI
+  "read_only": true
+}
